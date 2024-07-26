@@ -19,6 +19,14 @@
 - show current logger user
   select user, host, db, command from information_schema.processlist;
 
+- update user password 1
+  use mysql;
+  update user set authentication_string='test' where user = 'test' and host = 'localhost';
+  flush privileges;
+
+- update user password 2
+  ALTER USER test@localhost IDENTIFIED BY 'test123';
+
 - drop user/s
   drop user test@localhost;
   drop user test@localhost,test2@localhost;
