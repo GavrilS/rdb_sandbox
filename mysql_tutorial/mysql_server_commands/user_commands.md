@@ -8,6 +8,21 @@
 - show users
   select user from mysql.user;
 
+- show more information on the user table
+  desc user;
+  select user, host, account_locked, password_expired from user;
+
+- show current user
+  select user();
+  select current_user();
+
+- show current logger user
+  select user, host, db, command from information_schema.processlist;
+
+- drop user/s
+  drop user test@localhost;
+  drop user test@localhost,test2@localhost;
+
 # User privileges:
 
 ALL PRIVILEGES: all privileges

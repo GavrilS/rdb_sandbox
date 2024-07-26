@@ -2,3 +2,4 @@
 
 SHOW DATABASES;
 EXIT;
+USE mysql;
