@@ -15,6 +15,14 @@
 - show tables
   SHOW TABLES;
   DESCRIBE test_table;
+  SHOW FULL TABLES;
+  SHOW TABLES IN test_db;
+  SHOW TABLES FROM test_db;
+
+  - SHOW TABLES LIKE pattern; or SHOW TABLES WHERE expression; Example:
+    SHOW TABLES LIKE "%test%";
+
+  SHOW TABLES WHERE table_type = "VIEW";\*\*
 
 - alter tables
 
