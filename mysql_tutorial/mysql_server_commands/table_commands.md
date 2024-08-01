@@ -45,6 +45,12 @@
 * To enable foreign key checks:
   SET FOREIGN_KEY_CHECKS=1;
 
+- drop tables
+  DROP [TEMPORARY] TABLE [IF EXISTS] table_name [RESTRICT | CASCADE];
+
+* TEMPORARY - delete temporary tables only
+* RESTRICT | CASCADE - optional statements that have no impact on this statement; they are included in the syntax for future versions
+
 1. Add a column
    ALTER TABLE table_name ADD new_column_name column_definition
    [FIRTS | AFTER column_name]
