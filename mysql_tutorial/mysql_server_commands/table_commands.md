@@ -15,9 +15,13 @@
 - show tables
   SHOW TABLES;
   DESCRIBE test_table;
+  DESC test_table;
+  SHOW COLUMNS FROM my_test_table;
+  SHOW COLUMNS FROM test_db.my_test_table;
   SHOW FULL TABLES;
   SHOW TABLES IN test_db;
   SHOW TABLES FROM test_db;
+  EXPLAIN SELECT \* FROM my_test_table;
 
   - SHOW TABLES LIKE pattern; or SHOW TABLES WHERE expression; Example:
     SHOW TABLES LIKE "%test%";
@@ -25,6 +29,21 @@
   SHOW TABLES WHERE table_type = "VIEW";\*\*
 
 - alter tables
+
+- truncate table - deletes the entire data in a table without removing the table structure; limitations:
+
+* cannot use WHERE clause;
+* cannot rollback deleted data;
+* the command doesn't work when a foreign key is referencing the table or it participates in an indexed view;
+* doesn't fire DELETE triggers associated with the table because it does not operate on individual rows
+  ** Syntax:
+  TRUNCATE [TABLE] table_name;
+  ** Example:
+  truncate table my_test_table;
+* How to Truncate a table with a foreign key reference:
+  SET FOREIGN_KEY_CHECKS=0;
+* To enable foreign key checks:
+  SET FOREIGN_KEY_CHECKS=1;
 
 1. Add a column
    ALTER TABLE table_name ADD new_column_name column_definition
