@@ -51,6 +51,30 @@
 * TEMPORARY - delete temporary tables only
 * RESTRICT | CASCADE - optional statements that have no impact on this statement; they are included in the syntax for future versions
 
+- temporary tables
+  CREATE TEMPORARY TABLE table*name (
+  column_1, column_2,..., table_constraints
+  );
+  CREATE TEMPORARY TABLE temp_table_name SELECT * FROM original*table_name LIMIT 0;
+  DROP TEMPORARY TABLE table_name;
+  Example:
+  CREATE TEMPORARY TABLE temp_test_table SELECT * FROM my_test_table LIMIT 0;
+  DROP TEMPORARY TABLE temp_test_table;
+
+- copy tables
+  CREATE TABLE IF NOT EXISTS new_table_name
+  SELECT column_1, column_2, column_3
+  FROM existing_table
+  WHERE condition;
+
+CREATE TABLE IF NOT EXISTS my_new_table LIKE my_existing_table;
+INSERT my_new_table SELECT \* FROM my_existing_table;
+
+Example:
+CREATE TABLE IF NOT EXISTS new_test_tb
+SELECT id, name, description
+FROM my_test_table;
+
 1. Add a column
    ALTER TABLE table_name ADD new_column_name column_definition
    [FIRTS | AFTER column_name]
