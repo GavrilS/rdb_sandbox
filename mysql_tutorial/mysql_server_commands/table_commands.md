@@ -195,3 +195,12 @@ FROM my_test_table;
 
 - release lock
   UNLOCK TABLES;
+
+* Account Lock
+
+- user account locking:
+  CREATE USER account_name IDENTIFIED BY 'password' ACCOUNT LOCK; (lock during user acc creation)
+  ALTER USER acc_name IDENTIFIED BY 'password' ACCOUNT LOCK; (lock existing user acc)
+
+- user account unlock:
+  ALTER USER [IF EXISTS] user_acc_name ACCOUNT UNLOCK;
