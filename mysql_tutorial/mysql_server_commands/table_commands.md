@@ -152,3 +152,46 @@ FROM my_test_table;
 
 * drop a view
   DROP VIEW [IF EXISTS] view_name;
+
+# Table locking
+
+- used mainly to solve concurency issues
+- two types of locks - read and write
+- InnoDB storage engine does not require table locking manually, because it already use row-level locking for its tables; all other storage engines use table locking in MySQL
+
+* Test table locking:
+  CREATE TABLE info_table (
+  id INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(50) NOT NULL,
+  Message VARCHAR(250) NOT NULL,
+  PRIMARY KEY(id)
+  );
+
+  INSERT INTO info_table (name, message)  
+   VALUES('Peter', 'Hi'),  
+   ('Joseph', 'Hello'),  
+   ('Mark', 'Welcome');
+
+  SELECT \* FROM info_table;
+
+  LOCK TABLE info_table READ;
+
+  INSERT INTO info_table (name, message)  
+   VALUES ('Suzi', 'Hi'); {This should be an error}
+
+  LOCK TABLE info_table WRITE;
+  INSERT INTO info_table (name, message)  
+   VALUES ('Stephen', 'How R U');
+  INSERT INTO info_table (name, message)  
+  VALUES ('George', 'Welcome');
+
+  SELECT \* FROM info_table;
+
+- acquire table lock explicitly
+  LOCK TABLES table_name [READ | WRITE],
+  tab_name2 [READ | WRITE],...;
+  Ex:
+  LOCK TABLES info_table [READ | WRITE];
+
+- release lock
+  UNLOCK TABLES;
