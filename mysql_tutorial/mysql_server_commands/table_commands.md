@@ -135,3 +135,20 @@ FROM my_test_table;
    Example:
    ALTER TABLE test_table
    RENAME TO new_test_table;
+
+- Views - virtual tables
+
+* create a view
+  CREATE [OR REPLACE] VIEW view_name AS
+  SELECT columns
+  FROM tables
+  [WHERE conditions];
+
+* update a view(without dropping it)
+  ALTER VIEW view_name AS
+  SELECT columns
+  FROM table
+  WHERE conditions;
+
+* drop a view
+  DROP VIEW [IF EXISTS] view_name;
