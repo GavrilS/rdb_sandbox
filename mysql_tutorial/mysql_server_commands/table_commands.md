@@ -75,6 +75,13 @@ CREATE TABLE IF NOT EXISTS new_test_tb
 SELECT id, name, description
 FROM my_test_table;
 
+- Repair a table
+  REPAIR [NO_WRITE_TO_BINLOG | LOCAL]
+  TABLE tbl_name [, tbl_name] ...
+  [QUICK] [EXTENDED] [USE_FIRM]
+
+* Column operations:
+
 1. Add a column
    ALTER TABLE table_name ADD new_column_name column_definition
    [FIRTS | AFTER column_name]
