@@ -45,3 +45,7 @@ docker run --name=mysql_server --restart on-failure -d container-registry.oracle
 - to delete the volume
   docker stop mysql_server
   docker rm -v mysql_server
+
+# Coping local files to the container
+
+- docker cp <local_file_name> <container_id:/destination>
