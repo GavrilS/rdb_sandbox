@@ -37,3 +37,22 @@
 * - ORDER BY and NULL:
     SELECT firstName, lastName, reportsTo FROM employees ORDER BY reportsTo;
     SELECT firstName, lastName, reportsTo FROM employees ORDER BY reportsTo DESC;
+
+- WHERE clause:
+  SELECT lastname, firstname, jobtitle FROM employees WHERE jobtitle = 'Sales Rep';
+  SELECT lastname, firstname, jobtitle, officeCode FROM employees WHERE jobtitle = 'Sales Rep' AND officeCode = 1;
+  SELECT lastName, firstName, jobTitle, officeCode FROM employees WHERE jobtitle = 'Sales Rep' OR officeCode = 1 ORDER BY officeCode, jobTitle;
+  SELECT lastName, firstName, officeCode FROM employees WHERE officeCode BETWEEN 1 AND 3 ORDER BY officeCode;
+  SELECT lastName, firstName FROM employees WHERE lastName LIKE '%son' ORDER BY lastName;
+  SELECT lastName, firstName, officeCode FROM employees WHERE officeCode in (1, 2, 3) ORDER BY officeCode;
+  SELECT lastName, firstName, reportsTo FROM employees WHERE reportsTo IS NULL;
+  SELECT lastName, firstName, jobTitle FROM employees WHERE jobTitle <> 'Sales Rep';
+  SELECT lastName, firstName, officeCode FROM employees WHERE officeCode > 3 ORDER BY officeCode;
+  SELECT lastName, firstName, officeCode FROM employees WHERE officeCode <= 4 ORDER BY officeCode;
+
+- DISTINCT clause:
+  SELECT lastName FROM employees ORDER BY lastName;
+  SELECT DISTINCT lastName FROM employees ORDER BY lastName;
+  SELECT state FROM customers ORDER BY state;
+  SELECT DISTINCT state FROM customers ORDER BY state;
+  SELECT DISTINCT state, city FROM customers WHERE state IS NOT NULL ORDER BY state, city;
