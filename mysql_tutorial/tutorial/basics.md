@@ -56,3 +56,25 @@
   SELECT state FROM customers ORDER BY state;
   SELECT DISTINCT state FROM customers ORDER BY state;
   SELECT DISTINCT state, city FROM customers WHERE state IS NOT NULL ORDER BY state, city;
+
+- LIKE operator:
+  SELECT firstName, lastName, employeeNumber FROM employees WHERE firstName LIKE 'a%';
+  SELECT firstName, lastName, employeeNumber FROM employees WHERE lastName LIKE '%son';
+  SELECT firstName, lastName, employeeNumber FROM employees WHERE lastName LIKE '%on%';
+  SELECT firstName, lastName, employeeNumber FROM employees WHERE firstName LIKE 'T_m';
+  SELECT firstName, lastName, employeeNumber FROM employees WHERE lastName NOT LIKE 'B%';
+  SELECT productCode, productName FROM products WHERE productCode LIKE '%\_20%';
+  SELECT productCode, productName FROM products WHERE productCode LIKE '%$_20%' ESCAPE '$';
+
+- LIMIT clause:
+  SELECT customerName, customerNumber, creditLimit FROM customers ORDER BY creditLimit LIMIT 5;
+  SELECT customerName, customerNumber, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 5;
+  SELECT customerName, customerNumber, creditLimit FROM customers ORDER BY creditLimit, customerNumber DESC LIMIT 5;
+  SELECT COUNT(\*) FROM customers;
+  SELECT customerNumber, customerName FROM customers ORDER BY customerName LIMIT 10;
+  SELECT customerNumber, customerName FROM customers ORDER BY customerName LIMIT 10,10;
+  SELECT customerNumber, customerName, creditLimit FROM customers ORDER BY creditLimit DESC;
+  SELECT customerNumber, customerName, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 2;
+  SELECT customerNumber, customerName, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 1, 1;
+  SELECT DISTINCT state FROM customers WHERE state IS NOT NULL LIMIT 5;
+  SELECT state FROM customers WHERE state IS NOT NULL LIMIT 5;
