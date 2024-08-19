@@ -1,3 +1,7 @@
+# MySQL clause evaluation priority:
+
+FROM -> WHERE -> GROUP BY -> SELECT -> DISTINCT -> ORDER BY -> LIMIT
+
 - Change to the database we want to use:
   use classicmodels;
 
