@@ -102,3 +102,26 @@
   SELECT productline, SUM(orderValue) totalOrderValue
   FROM sales GROUP BY productline
   UNION ALL SELECT NULL, SUM(orderValue) totalOrderValue FROM sales;
+  SELECT productline, SUM(orderValue) totalOrderValue
+  FROM sales GROUP BY productline WITH ROLLUP;
+  SELECT productline, orderYear, SUM(orderValue) totalOrderValue
+  FROM sales GROUP BY productline, orderYear WITH ROLLUP;
+  SELECT orderYear, productline, SUM(orderValue) totalOrderValue
+  FROM sales GROUP BY orderYear, productline WITH ROLLUP;
+  SELECT productline, orderYear, SUM(orderValue) totalOrderValue, GROUPING(productline), GROUPING(orderYear) FROM sales GROUP BY productline, orderYear WITH ROLLUP;
+  SELECT IF(GROUPING(productline), 'All Product Lines', productline) productline,
+  IF(GROUPING(orderYear), 'All Order Years', orderYear) orderYear,
+  SUM(orderValue) totalOrderValue FROM sales GROUP BY productline, orderYear WITH ROLLUP;
+
+- Subqueries
+  SELECT lastName, firstName FROM employees WHERE officeCode IN (
+  SELECT officeCode FROM offices WHERE country = 'USA'
+  );
+  SELECT customerNumber, checkNumber, amount FROM payments
+  WHERE amount = (SELECT MAX(amount) from payments);
+  SELECT customerNumber, checkNumber, amount FROM payments
+  WHERE amount > (SELECT AVG(amount) from payments);
+  SELECT customerName FROM customers WHERE customerNumber NOT IN (SELECT DISTINCT
+  customerNumber FROM orders);
+  SELECT MAX(items), MIN(items), FLOOR(AVG(items)) FROM (SELECT
+  orderNumber, COUNT(orderNumber) as items FROM orderdetails GROUP BY orderNumber) AS lineitems;
