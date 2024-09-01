@@ -37,3 +37,13 @@
   SELECT firstName FROM employees EXCEPT SELECT contactFirstName FROM customers;
   SELECT firstName FROM employees EXCEPT SELECT contactFirstName FROM customers ORDER BY firstName;
   SELECT firstName FROM employees EXCEPT ALL SELECT contactFirstName FROM customers ORDER BY firstName;
+
+- Intersect operator - used to find common rows of multiple queries
+  Syntax: query1 INTERSECT [ALL | DISTINCT] query2;
+  Rules: order and number of columns in the queries needs to be the same; the data types of the corresponding queries needs to be the same; uses DISTINCT by default
+  Examples(with tables t1 and t2 from above):
+  SELECT id FROM t1 INTERSECT SELECT id FROM t2;
+  SELECT id FROM t1 INTERSECT ALL SELECT id FROM t2;
+  SELECT firstName FROM employees INTERSECT SELECT contactFirstName FROM customers;
+  SELECT firstName FROM employees INTERSECT SELECT contactFirstName FROM customers ORDER BY firstName;
+  SELECT firstName FROM employees INTERSECT ALL SELECT contactFirstName FROM customers ORDER BY firstName;
