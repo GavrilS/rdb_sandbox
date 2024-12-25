@@ -17,3 +17,6 @@ echo "==========================="
 
 # For troubleshooting problems we can use the systemd journal
 # sudo journalctl -u mysql
+
+# Update the user so we can connect with root from all users
+sudo mysql -u $user -p $password < ./update_user.sql
